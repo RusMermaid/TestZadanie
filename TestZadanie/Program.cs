@@ -17,8 +17,8 @@ namespace Zadanie
             double L = 5.0;
             double x0 = 3.0;
             double y0 = -4.0;
-            double vx0 = 1.0;
-            double vy0 = 0.0;
+            double vx0 = -0.8;
+            double vy0 = -0.6;
             double T = 1001.0;
             double h = 0.01;
 
