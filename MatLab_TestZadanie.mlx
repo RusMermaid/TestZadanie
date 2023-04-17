@@ -1,0 +1,29 @@
+%TestZadanie 
+m = 1; 
+L  = 5;  
+x(1) = 3; 
+y(1) = -4; 
+vx0 = -0.8; 
+vy0 = -0.6; 
+ 
+totalTime = 1000; 
+h = 0.001; 
+c=h^2/(m*L); 
+x(2)=x(1)+vx0*h; 
+y(2)=y(1)+vy0*h; 
+t(1)=0; t(2)=h; 
+l(1)=5; l(2)=5; 
+ 
+nSteps=round(totalTime/h); 
+for n=3:nSteps+1 
+    t(n)=(n-1)*h; 
+    g=9.81+0.05*sin(2*pi*(t(n-2))); 
+    A = [1 0 c*x(n-2); 0 1 c*y(n-2); x(n-1) y(n-1) 0]; 
+    b=[2*x(n-1)-x(n-2); 2*y(n-1)-y(n-2)-g*h^2; L^2]; 
+    z=A\b; 
+    x(n)=z(1);  
+    y(n)=z(2);  
+    l(n)=(x(n)^2+y(n)^2)^0.5; 
+end 
+ 
+plot(t,l)
